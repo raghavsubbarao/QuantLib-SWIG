@@ -118,6 +118,8 @@ class FxDeltaConverter {
 
 %template(DeltaVolQuoteHandleVector) std::vector<Handle<DeltaVolQuote> >;
 
+// declared as a shared pointer before the targets take it by reference
+%shared_ptr(FxSmileSection)
 class FxSmileSection;
 
 %shared_ptr(FxSmileTarget)
@@ -251,7 +253,6 @@ class FxDeltaVolQuotes : public FxSmileQuotes {
 /* FxSmileSection is also a LazyObject in C++; only SmileSection is declared
    as a base here (both derive from Observable), and the LazyObject methods
    are added below. */
-%shared_ptr(FxSmileSection)
 class FxSmileSection : public SmileSection {
   private:
     FxSmileSection();
@@ -428,6 +429,21 @@ enum class FxSmileModel {
     CostStickyDelta,
     CostStickyDeltaConvex
 };
+
+#if defined(SWIGPYTHON)
+%pythoncode %{
+class FxSmileModel:
+    """The smile models makeFxSmileSection builds (C++ enum class FxSmileModel)."""
+    Sabr = FxSmileModel_Sabr
+    Svi = FxSmileModel_Svi
+    Polynomial = FxSmileModel_Polynomial
+    Quadratic = FxSmileModel_Quadratic
+    CostFlatDynamics = FxSmileModel_CostFlatDynamics
+    CostScaledDynamics = FxSmileModel_CostScaledDynamics
+    CostStickyDelta = FxSmileModel_CostStickyDelta
+    CostStickyDeltaConvex = FxSmileModel_CostStickyDeltaConvex
+%}
+#endif
 
 ext::shared_ptr<FxSmileSection>
 makeFxSmileSection(FxSmileModel model,

@@ -20,6 +20,7 @@
 # reference values are those of test-suite/fxsmilesections.cpp, so the
 # wrapped classes are checked against the C++ tests.
 
+import gc
 import math
 import unittest
 
@@ -79,6 +80,10 @@ class FxSmileSectionTest(unittest.TestCase):
         self.md = MarketData()
 
     def tearDown(self):
+        # release the sections first: they observe the evaluation date, and
+        # their fixed expiry is before today's date
+        del self.md
+        gc.collect()
         ql.Settings.instance().evaluationDate = ql.Date()
 
     def testEveryModelCalibrates(self):
