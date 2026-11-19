@@ -500,8 +500,10 @@ class CPIBond : public Bond {
     %feature("kwargs") CPIBond;
     #endif
   public:
-    CPIBond(Natural settlementDays,
+    CPIBond(
+            Natural settlementDays,
             Real faceAmount,
+            bool growthOnly,
             Real baseCPI,
             const Period& observationLag,
             const ext::shared_ptr<ZeroInflationIndex>& cpiIndex,

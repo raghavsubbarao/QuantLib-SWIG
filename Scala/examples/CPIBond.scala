@@ -115,6 +115,7 @@ object CPIBond {
         val contractObservationLag = new Period(3, TimeUnit.Months)
         val observationInterpolation = CPI.InterpolationType.Flat
         val settlementDays = 3
+        val growthOnly = true
         
         val baseCPI = 206.1
         val startDate = new Date(2, October, 2007)
@@ -126,7 +127,7 @@ object CPIBond {
           BusinessDayConvention.Unadjusted,
           DateGeneration.Rule.Backward, false)
           
-        val bond = new CPIBond(settlementDays, notional,
+        val bond = new CPIBond(settlementDays, notional, growthOnly,
                                baseCPI, contractObservationLag,
                                inflationIndex, observationInterpolation,
                                fixedSchedule, fixedRates, fixedDayCounter, 

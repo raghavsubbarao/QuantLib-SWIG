@@ -35,7 +35,6 @@ class Statistics {
   public:
     Size samples() const;
     Real weightSum() const;
-    Real percentile(Real percent) const;
     Real mean() const;
     Real variance() const;
     Real standardDeviation() const;
@@ -96,8 +95,6 @@ class RiskStatistics : public Statistics {
     Real potentialUpside(Real percentile) const;
     Real valueAtRisk(Real percentile) const;
     Real expectedShortfall(Real percentile) const;
-    Real gaussianValueAtRisk(Real percentile) const;
-    Real gaussianExpectedShortfall(Real percentile) const;
     Real shortfall(Real target) const;
     Real averageShortfall(Real target) const;
 };

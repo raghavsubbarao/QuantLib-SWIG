@@ -16,5 +16,6 @@ The constructor of `GlobalLinearSimpleZeroCurve` was overloaded and therefore ca
 Full list of pull requests
 --------------------------
 
-All the pull requests merged in this release are listed on its release page at <https://github.com/lballabio/QuantLib-SWIG/releases/tag/v1.44>.  The same page also provides the full list of commits since the previous release.
+All the pull requests merged in this release are listed on its release page at <https://github.com/lballabio/QuantLib-SWIG/releases/tag/v1.44>.
 
+The list of commits since the previous release is available in `ChangeLog.txt`.

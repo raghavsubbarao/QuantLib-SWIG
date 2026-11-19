@@ -74,9 +74,9 @@ class AssetOrNothingPayoff : public StrikedTypePayoff {
 %shared_ptr(SuperSharePayoff)
 class SuperSharePayoff : public StrikedTypePayoff {
   public:
-    SuperSharePayoff(Real strike,
-                     Real secondStrike,
-                     Real cashPayoff);
+    SuperSharePayoff(Option::Type type,
+                        Real strike,
+                        Real increment);
 };
 
 %shared_ptr(GapPayoff)
